@@ -19,7 +19,6 @@ public class GestionClient {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(300, 90, width, height);
         frame.setResizable(false);
-        frame.setVisible(true);
         frame.getContentPane().setBackground(new Color(242, 242, 247));
         frame.getContentPane().setLayout(null);
 
@@ -171,18 +170,18 @@ public class GestionClient {
             }
         });
 
-        JTextArea show = new JTextArea();
+        JTextArea show = new JTextArea(30, 40);
 		show.setFont(new Font("Arial", Font.PLAIN, 15));
-		show.setSize(300, 400);
-		show.setLocation(500, 100);
+		// show.setSize(300, 400);
+		show.setLocation(450, 100);
 		show.setLineWrap(true);
         show.setWrapStyleWord(true);
 		show.setEditable(false);
 
         JScrollPane scroll = new JScrollPane(show);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		frame.getContentPane().add(scroll);
+        // scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		// frame.add(scroll);
 
         JButton showClients = new JButton("Afficher");
         showClients.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -199,10 +198,12 @@ public class GestionClient {
                     String clientsList = "";
                     int i = 1;
                     for (Client client : clients) {
-                        clientsList += "Client " + i + "): \nNom: "+ client.getLastName().toString() + "\nPrenom: " + client.getLastName().toString() + "\nTel: " + client.getPhoneNumber().toString()+ "\n";
+                        clientsList += "Client " + i + "): \nNom: "+ client.getLastName().toString() + "\nPrenom: " + client.getLastName().toString() + "\nTel: " + client.getPhoneNumber().toString()+ "\n \n";
                         i++;
                     }
                     show.setText(clientsList);
+                    JOptionPane.showMessageDialog(frame, scroll, "Liste des Clients", JOptionPane.INFORMATION_MESSAGE);
+                    // JOptionPane.showMessageDialog(frame, clientsList);
                 } catch (IllegalArgumentException e) {
                     show.setText(e.getMessage());
                 }
@@ -210,6 +211,9 @@ public class GestionClient {
             }
         });
 
+        
+
+        frame.setVisible(true);
 
 }
 }
